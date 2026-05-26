@@ -1,5 +1,5 @@
-#include <windows.h>
 #include <iostream>
+#include <locale>
 #include <memory>
 #include "NetworkSimulator.h"
 #include "Router.h"
@@ -7,8 +7,12 @@
 #include "CSMA_CD.h"
 
 int main() {
-    SetConsoleOutputCP(CP_UTF8);
-    SetConsoleCP(CP_UTF8);
+
+    if (std::setlocale(LC_ALL, "ru_RU.UTF-8") == nullptr) {
+        std::setlocale(LC_ALL, "");
+    }
+    try { std::locale::global(std::locale("ru_RU.UTF-8")); }
+    catch (...) {}
 
     NetworkSimulator sim;
 

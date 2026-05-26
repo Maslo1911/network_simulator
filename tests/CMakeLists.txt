@@ -28,8 +28,5 @@ target_link_libraries(run_unit_tests PRIVATE
     gtest_main
 )
 
-# Ensure MSVC compiles sources as UTF-8 so string literals are interpreted correctly
-target_compile_options(run_unit_tests PRIVATE $<$<CXX_COMPILER_ID:MSVC>:/utf-8>)
-
 # Интеграция с подсистемой CTest
 add_test(NAME AllProjectTests COMMAND run_unit_tests)
